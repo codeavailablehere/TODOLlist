@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>To do list</title>
+    <style>
+        *{
+        
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+         height: 100vh;
+         background: #066acd;
+           }
+        .container{
+            width: 40%;
+            min-width: 450px;
+            position: absolute;
+            min-height: 100px;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            background: white;
+            border-radius: 10px;
+        }
+        .outer
+        {
+            position: relative;
+            padding: 20px 30px;
+        }
+        input {
+            margin: 0;
+            border: none;
+            border-radius: 2px;
+            width: 70%;
+            padding: 10px;
+            float: left;
+            font-size: 16px;
+            border: 2px solid black;
+
+            }
+            button {
+            padding: 10px;
+            width: 25%;
+            background-color: cornflowerblue;
+            color: white;
+            float: left;
+            margin-left: 4px;
+            text-align: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 2px;
+                  }
+    #inner
+    {
+        background-color:white;
+        padding: 30px 20px;
+        margin-top: 30px;
+        border-radius: 10px;
+        width: 100%;
+        position: relative;
+        
+        
+    }
+    .task
+    {
+        background-color: #c5e1e6;
+        height: 50px;
+        margin: 20px;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid black;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .task span{
+        font-family: 'poppins',sans-serif;
+        font-size: 15px;
+        font-weight: 350;
+    }
+    .task button{
+        background-color: #0a2ea4;
+        color: white;
+        height: 100%;
+        width: 40px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        outline:none;
+    }
+    .header
+    {
+        text-align: center;
+        font-size: 50px;
+        border: 2px solid black;
+        border-radius: 2px;
+        justify-content: center;
+        color: white;
+        background-color: darkgray;
+        margin-bottom: 15px;
+        padding:30px;
+        width: 95%;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="outer">
+        <div class="header">To Do List</div>
+        <input type="text" id="myInput" placeholder="Enter the text here.">
+        <button type="button" onclick="Additem()" id="add">Add</button>   
+      </div>
+      <div id="inner">
+      </div>
+    </div>
+
+    <!-- javascript function -->
+
+    <script>
+    document.querySelector('#add').onclick=function()
+    {
+        
+    if(document.querySelector('.outer input').value.length==0)
+    {
+        alert("Please enter the text!");
+    }
+    else{
+        
+        document.querySelector('#inner').innerHTML += `
+        
+        <div class="task">
+            <span id ="task1">
+                ${document.querySelector('.outer input').value
+            }
+            </span>
+            
+                <button class="delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    </div>
+        `;
+        // now function for delete button.
+        var del=document.querySelectorAll(".delete");
+        
+        for(var i=0;i<del.length;i++)
+        {
+            del[i].onclick=function()
+            {
+                this.parentNode.remove();
+            }
+            // const d = new Date();
+            // document.getElementById("task1").innerHTML = d;
+        }
+    }   
+    
+    }
+    </script>
+</body>
+</html>
